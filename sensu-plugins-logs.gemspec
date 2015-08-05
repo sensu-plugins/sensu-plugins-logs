@@ -15,8 +15,8 @@ Gem::Specification.new do |s|
   s.authors                = ['Sensu-Plugins and contributors']
   s.cert_chain             = ['certs/sensu-plugins.pem']
   s.date                   = Date.today.to_s
-  s.description            = 'This plugin provides native log instrumentation 
-                              for monitoring, including: journald history, and 
+  s.description            = 'This plugin provides native log instrumentation
+                              for monitoring, including: journald history, and
                               regex matching. Includes various log handlers.'
   s.email                  = '<sensu-users@googlegroups.com>'
   s.executables            = Dir.glob('bin/**/*.rb').map { |file| File.basename(file) }
