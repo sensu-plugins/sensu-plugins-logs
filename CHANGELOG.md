@@ -6,9 +6,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ## Unreleased
 - nothing
 
-## [0.0.3] - 2015-07-14
+## [0.0.3] - 2015-10-22
 ### Changed
 - updated sensu-plugin gem to 1.2.0
+- multibyte fix
 
 ### Removed
 - Remove JSON gem dep that is not longer needed with Ruby 1.9+
