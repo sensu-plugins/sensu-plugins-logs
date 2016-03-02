@@ -34,7 +34,7 @@ require 'sensu-plugin/check/cli'
 require 'fileutils'
 
 class CheckLog < Sensu::Plugin::Check::CLI
-  BASE_DIR = '/var/cache/check-log'
+  BASE_DIR = '/var/cache/check-log'.freeze
 
   option :state_auto,
          description: 'Set state file dir automatically using name',
@@ -119,7 +119,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
         if config[:case_insensitive]
           file_list << "#{dir_str}/#{file}" if file.to_s.downcase.match(file_pat.downcase)
         else
-          file_list << "#{dir_str}/#{file}" if file.to_s.match(file_pat)
+          file_list << "#{dir_str}/#{file}" if file.to_s.match(file_pat) # rubocop:disable Style/IfInsideElse
         end
       end
     end
@@ -154,11 +154,11 @@ class CheckLog < Sensu::Plugin::Check::CLI
     state_dir = config[:state_auto] || config[:state_dir]
 
     # Opens file using optional encoding page.  ex: 'iso8859-1'
-    if config[:encoding]
-      @log = File.open(log_file, "r:#{config[:encoding]}")
-    else
-      @log = File.open(log_file)
-    end
+    @log = if config[:encoding]
+             File.open(log_file, "r:#{config[:encoding]}")
+           else
+             File.open(log_file)
+           end
 
     @state_file = File.join(state_dir, File.expand_path(log_file).sub(/^([A-Z]):\//, '\1/'))
     @bytes_to_skip = begin
@@ -196,7 +196,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
             n_warns += 1
           end
         else
-          if config[:only_warn]
+          if config[:only_warn] # rubocop:disable Style/IfInsideElse
             n_warns += 1
           else
             n_crits += 1

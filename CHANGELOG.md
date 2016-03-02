@@ -3,7 +3,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
-## Unreleased
+## [Unreleased]
 - nothing
 
 ## [0.0.3] - 2015-10-22
@@ -18,3 +18,6 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ### Added
 - initial release
+
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/0.0.3...HEAD
+[0.0.3]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/0.0.1...0.0.3
