@@ -18,7 +18,6 @@
 #
 # DEPENDENCIES:
 #   gem: sensu-plugin
-#   gem: fileutils
 #
 # USAGE:
 #   #YELLOW

@@ -39,7 +39,6 @@ Gem::Specification.new do |s|
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
   s.version                = SensuPluginsLogs::Version::VER_STRING
 
-  s.add_runtime_dependency 'fileutils', '0.7'
   s.add_runtime_dependency 'sensu-plugin', '~> 1.2'
 
   s.add_development_dependency 'bundler',                   '~> 1.7'
