@@ -36,6 +36,7 @@
 
 require 'sensu-plugin/check/cli'
 require 'fileutils'
+require 'English'
 
 class CheckLog < Sensu::Plugin::Check::CLI
   BASE_DIR = '/var/cache/check-log'.freeze
@@ -157,10 +158,12 @@ class CheckLog < Sensu::Plugin::Check::CLI
       dir_str = config[:file_pattern].slice(0, config[:file_pattern].to_s.rindex('/'))
       file_pat = config[:file_pattern].slice((config[:file_pattern].to_s.rindex('/') + 1), config[:file_pattern].length)
       Dir.foreach(dir_str) do |file|
-        if config[:case_insensitive] && !config[:exclude_file]
-          file_list << "#{dir_str}/#{file}" if file.to_s.downcase.match(file_pat.downcase)
+        if config[:case_insensitive]
+          file_list << "#{dir_str}/#{file}" if file.to_s.downcase.match(file_pat.downcase) && \
+                                               !file.to_s.downcase.match(config[:exclude_file])
         else
-          file_list << "#{dir_str}/#{file}" if file.to_s.match(file_pat)
+          file_list << "#{dir_str}/#{file}" if file.to_s.match(file_pat) && \
+                                               !file.to_s.match(config[:exclude_file])
         end
       end
     end
@@ -205,7 +208,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
     @state_file = File.join(state_dir, File.expand_path(log_file).sub(/^([A-Z]):\//, '\1/'))
 
     @inode = begin
-      File.open(@state_file) do |file|
+      File.open(@state_file, 'r+') do |file|
         file.readline.each_line(':').to_a[0].to_i
       end
     rescue
@@ -213,7 +216,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
     end
 
     @bytes_to_skip = begin
-      File.open(@state_file) do |file|
+      File.open(@state_file, 'r+') do |file|
         file.readline.each_line(':').to_a[1].to_i
       end
     rescue
@@ -230,7 +233,8 @@ class CheckLog < Sensu::Plugin::Check::CLI
     error = ''
 
     if match
-      error = "\n" + log_file + ': ' + line.slice(0, 250) unless config[:return_threshold] && $NR > config[:return_threshold]
+      error = "\n" + log_file + ': ' + line.slice(0, 250) unless config[:return_threshold] && \
+                                                                 $INPUT_LINE_NUMBER > config[:return_threshold]
       if match[1]
         if config[:crit] && match[1].to_i > config[:crit]
           n_crits = 1
