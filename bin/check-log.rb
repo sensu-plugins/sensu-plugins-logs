@@ -180,6 +180,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
     @log.seek(@bytes_to_skip, File::SEEK_SET) if @bytes_to_skip > 0
     # #YELLOW
     @log.each_line do |line|
+      line = line.encode('UTF-8', invalid: :replace, replace: '')
       bytes_read += line.bytesize
       if config[:case_insensitive]
         m = line.downcase.match(config[:pattern].downcase) unless line.match(config[:exclude])
