@@ -13,7 +13,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 - Returned lines now include the file name - check-log.rb
 - Refactored code into methods - check-log.rb
 - Fixed rubocop errors - check-log.rb
-- Now opens state files as read/write so new files have write access
+- Now opens state files as read/write so new files have write access - check-log.rb
 
 ## [0.0.4] - 2016-03-12
 ### Removed

@@ -22,12 +22,8 @@
 # USAGE:
 #   #YELLOW
 #
-# EXAMPLES:
-#   Returns matched lines, searches all files containing "logfile",
-#   ignores all .gz files, searches for "ERROR" in each line,
-#   returns a max of 4 matched lines in output
+# NOTES:
 #
-#   check-log.rb -r -F "logfile" -q "ERROR" -X "^.+\.gz$" -t 4
 # LICENSE:
 #   Copyright 2011 Sonian, Inc <chefs@sonian.net>
 #   Released under the same terms as Sensu (the MIT license); see LICENSE
