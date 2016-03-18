@@ -157,9 +157,8 @@ class CheckLog < Sensu::Plugin::Check::CLI
         if config[:case_insensitive]
           file_list << "#{dir_str}/#{file}" if file.to_s.downcase.match(file_pat.downcase) && \
                                                !file.to_s.downcase.match(config[:exclude_file])
-        else
-          file_list << "#{dir_str}/#{file}" if file.to_s.match(file_pat) && \
-                                               !file.to_s.match(config[:exclude_file])
+        elsif file.to_s.match(file_pat) && !file.to_s.match(config[:exclude_file])
+          file_list << "#{dir_str}/#{file}"
         end
       end
     end
@@ -237,12 +236,10 @@ class CheckLog < Sensu::Plugin::Check::CLI
         elsif config[:warn] && match[1].to_i > config[:warn]
           n_warns = 1
         end
+      elsif config[:only_warn]
+        n_warns = 1
       else
-        if config[:only_warn]
-          n_warns = 1
-        else
-          n_crits = 1
-        end
+        n_crits = 1
       end
     end
     [n_warns, n_crits, error]
