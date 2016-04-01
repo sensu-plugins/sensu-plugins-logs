@@ -136,7 +136,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
       n_crits_overall += n_crits
 
       if config[:return_content]
-        error_overall = accumulative_error
+        error_overall += accumulative_error
       end
     end
     message "#{n_warns_overall} warnings, #{n_crits_overall} criticals for pattern #{config[:pattern]}. #{error_overall}"
