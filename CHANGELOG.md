@@ -5,6 +5,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 
+## [1.0.0] - 2017-03-07
 ### Fixed
 - `check-log.rb`: Drop non-ASCII chars from log line (@vlinevich)
 - `check-log.rb`: Fix return content to have matched line (@saka-shin)
