@@ -5,6 +5,19 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 
+### Fixed
+- `check-log.rb`: Drop non-ASCII chars from log line (@vlinevich)
+- `check-log.rb`: Fix return content to have matched line (@saka-shin)
+
+### Changed
+- Upgrade to Rubocop 0.40 and cleanup (@eheydrick)
+
+### Added
+- Ruby 2.3 support
+
+### Removed
+- Ruby 2.0 and older support (@eheydrick)
+
 ## [0.0.4] - 2016-03-12
 ### Removed
 - Remove dependency on the fileutils gem
