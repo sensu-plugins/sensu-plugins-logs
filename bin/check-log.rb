@@ -57,6 +57,11 @@ class CheckLog < Sensu::Plugin::Check::CLI
          short: '-q PAT',
          long: '--pattern PAT'
 
+  option :log_pattern,
+         description: 'The log format of each log entry',
+         short: '-l PAT',
+         long: '--log-pattern PAT'
+
   option :exclude,
          description: 'Pattern to exclude from matching',
          short: '-E PAT',
@@ -105,6 +110,13 @@ class CheckLog < Sensu::Plugin::Check::CLI
          long: '--return',
          boolean: true,
          default: false
+
+  option :return_content_length,
+         description: 'Matched line length',
+         short: '-L N',
+         long: '--return-length N',
+         proc: proc(&:to_i),
+         default: 250
 
   def run
     unknown 'No log file specified' unless config[:log_file] || config[:file_pattern]
@@ -180,6 +192,10 @@ class CheckLog < Sensu::Plugin::Check::CLI
     @log.seek(@bytes_to_skip, File::SEEK_SET) if @bytes_to_skip > 0
     # #YELLOW
     @log.each_line do |line|
+      if config[:log_pattern]
+        line = get_log_entry(line)
+      end
+
       line = line.encode('UTF-8', invalid: :replace, replace: '')
       bytes_read += line.bytesize
       if config[:case_insensitive]
@@ -188,7 +204,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
         m = line.match(config[:pattern]) unless line.match(config[:exclude])
       end
       if m
-        accumulative_error += "\n" + line.slice(0, 250)
+        accumulative_error += "\n" + line.slice(0..config[:return_content_length])
         if m[1]
           if config[:crit] && m[1].to_i > config[:crit]
             n_crits += 1
@@ -209,5 +225,21 @@ class CheckLog < Sensu::Plugin::Check::CLI
       file.write(@bytes_to_skip + bytes_read)
     end
     [n_warns, n_crits, accumulative_error]
+  end
+
+  def get_log_entry(first_line)
+    log_entry = [first_line]
+
+    @log.each_line do |line|
+      if !line.match(config[:log_pattern])
+        log_entry.push(line)
+      else
+        @log.pos = @log.pos - line.bytesize if line
+        break
+      end
+    end
+
+    log_entry = log_entry.join('')
+    log_entry
   end
 end
