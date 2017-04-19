@@ -192,7 +192,6 @@ class CheckLog < Sensu::Plugin::Check::CLI
     @log.seek(@bytes_to_skip, File::SEEK_SET) if @bytes_to_skip > 0
     # #YELLOW
     @log.each_line do |line|
-
       if config[:log_pattern]
         line = get_log_entry(line)
       end
@@ -235,12 +234,12 @@ class CheckLog < Sensu::Plugin::Check::CLI
       if !line.match(config[:log_pattern])
         log_entry.push(line)
       else
-        @log.pos = @log.pos - line.bytesize unless !line
+        @log.pos = @log.pos - line.bytesize if line
         break
       end
     end
 
-    log_entry = log_entry.join("")
+    log_entry = log_entry.join('')
     log_entry
   end
 end
