@@ -258,5 +258,4 @@ class CheckLog < Sensu::Plugin::Check::CLI
     end
     ok
   end
-
 end
