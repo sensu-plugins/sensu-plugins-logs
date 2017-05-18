@@ -169,7 +169,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
     @state_file = File.join(state_dir, File.expand_path(log_file).sub(/^([A-Z]):\//, '\1/'))
     @bytes_to_skip = begin
       File.open(@state_file) do |file|
-        file.flock(File::LOCK_SH)
+        file.flock(File::LOCK_SH) unless Gem.win_platform?
         file.readline.to_i
       end
     rescue
@@ -214,7 +214,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
     end
     FileUtils.mkdir_p(File.dirname(@state_file))
     File.open(@state_file, File::RDWR | File::CREAT, 0644) do |file|
-      file.flock(File::LOCK_EX)
+      file.flock(File::LOCK_EX) unless Gem.win_platform?
       file.write(@bytes_to_skip + bytes_read)
     end
     [n_warns, n_crits, accumulative_error]
