@@ -57,6 +57,16 @@ class CheckLog < Sensu::Plugin::Check::CLI
          short: '-q PAT',
          long: '--pattern PAT'
 
+  # this check currently makes no attempt to try to save you from
+  # a bad regex such as being unbound. Regexes ending in anything like:
+  # `.*`, `.+`, `[0-9-A-Z-a-z]+`, etc. Having regex without a real
+  # boundry could force the entire log file into memory at once rather
+  # line by line and could have signifigant performance impact. Please
+  # if you are going to use this please make sure you have log rotation
+  # set up and test your regex to make sure that it will catch what
+  # you want. I would reccomend placing several log examples into
+  # something like http://regexr.com/ and ensure that your regex properly
+  # catches the boundries. You have been warned.
   option :log_pattern,
          description: 'The log format of each log entry',
          short: '-l PAT',
