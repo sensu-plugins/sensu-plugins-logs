@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Changed
+- `check-log.rb`: Fix 'crit' and 'warn' flags being ignored in search_log
+
 ## [1.1.0] - 2017-05-20
 ### Added
 - Add `return-length` option to support custom length for returned matched lines
