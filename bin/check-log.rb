@@ -197,6 +197,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
     bytes_read = 0
     n_warns = 0
     n_crits = 0
+    n_matched = 0
     accumulative_error = ''
 
     @log.seek(@bytes_to_skip, File::SEEK_SET) if @bytes_to_skip > 0
@@ -215,20 +216,13 @@ class CheckLog < Sensu::Plugin::Check::CLI
       end
       if m
         accumulative_error += "\n" + line.slice(0..config[:return_content_length])
-        if m[1]
-          if config[:crit] && m[1].to_i > config[:crit]
-            n_crits += 1
-          elsif config[:warn] && m[1].to_i > config[:warn]
-            n_warns += 1
-          end
-        else
-          if config[:only_warn] # rubocop:disable Style/IfInsideElse
-            n_warns += 1
-          else
-            n_crits += 1
-          end
-        end
+        n_matched += 1
       end
+    end
+    if !config[:only_warn] && config[:crit] && n_matched >= config[:crit]
+      n_crits = n_matched
+    elsif config[:warn] && n_matched >= config[:warn]
+      n_warns = n_matched
     end
     FileUtils.mkdir_p(File.dirname(@state_file))
     File.open(@state_file, 'w') do |file|
