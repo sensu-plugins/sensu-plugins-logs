@@ -4,8 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+## [1.1.1] - 2017-05-21
 ### Changed
-- `check-log.rb`: Fix 'crit' and 'warn' flags being ignored in search_log
+- `check-log.rb`: Fix 'crit' and 'warn' flags being ignored in search_log (@avifried1)
 
 ## [1.1.0] - 2017-05-20
 ### Added
@@ -43,7 +44,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.1.1...HEAD
+[1.1.1]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.0.0...1.1.0
 [0.0.4]:
 [1.0.0]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/0.0.4...1.0.0
