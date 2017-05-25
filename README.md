@@ -9,6 +9,7 @@
 ## Functionality
 
 ## Files
+ * bin/check-alertclear-patterns.rb
  * bin/check-journal.rb
  * bin/check-log.rb
  * bin/handler-logevent.rb
