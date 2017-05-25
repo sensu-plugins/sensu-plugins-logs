@@ -13,6 +13,9 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 - Add `return-length` option to support custom length for returned matched lines
 - Add `log-pattern` option to support read and match against whole log entry instead of single line
 
+### Fixed
+- Write the state file atomically
+
 ## [1.0.0] - 2017-03-07
 ### Fixed
 - `check-log.rb`: Drop non-ASCII chars from log line (@vlinevich)
