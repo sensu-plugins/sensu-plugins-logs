@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+## [1.1.2] - 2017-05-25
+### Fixed
+- Write the state file atomically by using flock where available (@nlopes)
+
 ## [1.1.1] - 2017-05-21
 ### Changed
 - `check-log.rb`: Fix 'crit' and 'warn' flags being ignored in search_log (@avifried1)
@@ -12,9 +16,6 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - Add `return-length` option to support custom length for returned matched lines
 - Add `log-pattern` option to support read and match against whole log entry instead of single line
-
-### Fixed
-- Write the state file atomically
 
 ## [1.0.0] - 2017-03-07
 ### Fixed
@@ -47,7 +48,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.1.1...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.1.2...HEAD
+[1.1.2]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.0.0...1.1.0
 [0.0.4]:
