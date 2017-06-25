@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Added
+- Support of UTF16 encoded characters 
+
 ## [1.1.2] - 2017-05-25
 ### Fixed
 - Write the state file atomically by using flock where available (@nlopes)
