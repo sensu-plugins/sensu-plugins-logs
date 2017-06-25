@@ -208,7 +208,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
         line = get_log_entry(line)
       end
 
-      line = line.encode('UTF-8', invalid: :replace, replace: '')
+      line = line.encode('UTF-16', invalid: :replace, replace: '').encode('UTF-8', invalid: :replace, replace: '')
       bytes_read += line.bytesize
       if config[:case_insensitive]
         m = line.downcase.match(config[:pattern].downcase) unless line.match(config[:exclude])
