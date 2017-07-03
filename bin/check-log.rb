@@ -216,9 +216,9 @@ class CheckLog < Sensu::Plugin::Check::CLI
       end
 
       if config[:encode_utf16]
-      	line = line.encode('UTF-16', invalid: :replace, replace: '')
+        line = line.encode('UTF-16', invalid: :replace, replace: '')
       end
-      
+
       line = line.encode('UTF-8', invalid: :replace, replace: '')
       bytes_read += line.bytesize
       if config[:case_insensitive]
