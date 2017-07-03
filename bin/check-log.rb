@@ -128,6 +128,13 @@ class CheckLog < Sensu::Plugin::Check::CLI
          proc: proc(&:to_i),
          default: 250
 
+  option :encode_utf16,
+         description: 'Encode line with utf16 before matching',
+         short: '-eu',
+         long: '--encode-utf16',
+         boolean: true,
+         default: false
+
   def run
     unknown 'No log file specified' unless config[:log_file] || config[:file_pattern]
     unknown 'No pattern specified' unless config[:pattern]
@@ -208,7 +215,11 @@ class CheckLog < Sensu::Plugin::Check::CLI
         line = get_log_entry(line)
       end
 
-      line = line.encode('UTF-16', invalid: :replace, replace: '').encode('UTF-8', invalid: :replace, replace: '')
+      if config[:encode_utf16]
+      	line = line.encode('UTF-16', invalid: :replace, replace: '')
+      end
+      
+      line = line.encode('UTF-8', invalid: :replace, replace: '')
       bytes_read += line.bytesize
       if config[:case_insensitive]
         m = line.downcase.match(config[:pattern].downcase) unless line.match(config[:exclude])
