@@ -33,7 +33,7 @@ require 'sensu-plugin/check/cli'
 require 'fileutils'
 
 class CheckLog < Sensu::Plugin::Check::CLI
-  BASE_DIR = '/var/cache/check-log'.freeze
+  BASE_DIR = '/var/cache/sensu/check-log'.freeze
 
   option :state_auto,
          description: 'Set state file dir automatically using name',
