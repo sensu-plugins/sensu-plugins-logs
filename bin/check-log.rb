@@ -128,7 +128,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
          proc: proc(&:to_i),
          default: 250
 
-  # Use this option when you expecting your log lines to contain invalid byte sequence in utf-8. 
+  # Use this option when you expecting your log lines to contain invalid byte sequence in utf-8.
   # https://github.com/sensu-plugins/sensu-plugins-logs/pull/26
   option :encode_utf16,
          description: 'Encode line with utf16 before matching',
