@@ -128,6 +128,15 @@ class CheckLog < Sensu::Plugin::Check::CLI
          proc: proc(&:to_i),
          default: 250
 
+  # Use this option when you expecting your log lines to contain invalid byte sequence in utf-8.
+  # https://github.com/sensu-plugins/sensu-plugins-logs/pull/26
+  option :encode_utf16,
+         description: 'Encode line with utf16 before matching',
+         short: '-eu',
+         long: '--encode-utf16',
+         boolean: true,
+         default: false
+
   def run
     unknown 'No log file specified' unless config[:log_file] || config[:file_pattern]
     unknown 'No pattern specified' unless config[:pattern]
@@ -206,6 +215,10 @@ class CheckLog < Sensu::Plugin::Check::CLI
     @log.each_line do |line|
       if config[:log_pattern]
         line = get_log_entry(line)
+      end
+
+      if config[:encode_utf16]
+        line = line.encode('UTF-16', invalid: :replace, replace: '')
       end
 
       line = line.encode('UTF-8', invalid: :replace, replace: '')
