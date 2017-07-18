@@ -8,6 +8,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 - ruby 2.4 testing (@majormoses)
 
 ### Fixed
+- Fixed unhandled encoding exception when using the `log-pattern` option (@jhshadi)
 - PR template spelling "compatibility"
 
 ## [1.2.0] - 2017-07-04

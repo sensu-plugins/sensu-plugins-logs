@@ -213,15 +213,11 @@ class CheckLog < Sensu::Plugin::Check::CLI
     @log.seek(@bytes_to_skip, File::SEEK_SET) if @bytes_to_skip > 0
     # #YELLOW
     @log.each_line do |line|
+      line = encode_line(line)
       if config[:log_pattern]
         line = get_log_entry(line)
       end
 
-      if config[:encode_utf16]
-        line = line.encode('UTF-16', invalid: :replace, replace: '')
-      end
-
-      line = line.encode('UTF-8', invalid: :replace, replace: '')
       bytes_read += line.bytesize
       if config[:case_insensitive]
         m = line.downcase.match(config[:pattern].downcase) unless line.match(config[:exclude])
@@ -250,6 +246,8 @@ class CheckLog < Sensu::Plugin::Check::CLI
     log_entry = [first_line]
 
     @log.each_line do |line|
+      line = encode_line(line)
+
       if !line.match(config[:log_pattern])
         log_entry.push(line)
       else
@@ -258,7 +256,14 @@ class CheckLog < Sensu::Plugin::Check::CLI
       end
     end
 
-    log_entry = log_entry.join('')
-    log_entry
+    log_entry.join('')
+  end
+
+  def encode_line(line)
+    if config[:encode_utf16]
+      line = line.encode('UTF-16', invalid: :replace, replace: '')
+    end
+
+    line.encode('UTF-8', invalid: :replace, replace: '')
   end
 end
