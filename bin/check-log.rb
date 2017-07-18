@@ -129,7 +129,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
          default: 250
 
   option :return_error_limit,
-         description: 'Max number of returned matched lines\log entries',
+         description: 'Max number of returned matched lines\"log entries"',
          short: '-M N', long: '--return-error-limit N',
          proc: proc(&:to_i)
 
