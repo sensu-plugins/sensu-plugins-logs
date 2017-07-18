@@ -5,6 +5,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 ### Added
+- Add `return-error-limit` option to limit the number of returned matched lines\log entries (@jhshadi)
 - ruby 2.4 testing (@majormoses)
 
 ### Fixed
@@ -24,8 +25,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [1.1.0] - 2017-05-20
 ### Added
-- Add `return-length` option to support custom length for returned matched lines
-- Add `log-pattern` option to support read and match against whole log entry instead of single line
+- Add `return-length` option to support custom length for returned matched lines (@jhshadi)
+- Add `log-pattern` option to support read and match against whole log entry instead of single line (@jhshadi)
 
 ## [1.0.0] - 2017-03-07
 ### Fixed
