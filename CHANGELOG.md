@@ -5,7 +5,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 ### Added
-- Add `return-error-limit` option to limit the number of returned matched lines(log entries) (@jhshadi)
+- Add `return-error-limit` option to limit the number of returned matched lines\"log entries" (@jhshadi)
 - ruby 2.4 testing (@majormoses)
 
 ### Fixed

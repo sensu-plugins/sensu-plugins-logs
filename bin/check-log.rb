@@ -129,9 +129,8 @@ class CheckLog < Sensu::Plugin::Check::CLI
          default: 250
 
   option :return_error_limit,
-         description: 'Max number of returned matched lines(log entries)',
-         short: '-M N',
-         long: '--return-error-limit N',
+         description: 'Max number of returned matched lines\"log entries"',
+         short: '-M N', long: '--return-error-limit N',
          proc: proc(&:to_i)
 
   # Use this option when you expecting your log lines to contain invalid byte sequence in utf-8.
