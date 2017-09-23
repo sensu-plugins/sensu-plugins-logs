@@ -128,6 +128,12 @@ class CheckLog < Sensu::Plugin::Check::CLI
          proc: proc(&:to_i),
          default: 250
 
+  option :return_error_limit,
+         description: 'Max number of returned matched lines(log entries)',
+         short: '-M N',
+         long: '--return-error-limit N',
+         proc: proc(&:to_i)
+
   # Use this option when you expecting your log lines to contain invalid byte sequence in utf-8.
   # https://github.com/sensu-plugins/sensu-plugins-logs/pull/26
   option :encode_utf16,
@@ -225,7 +231,9 @@ class CheckLog < Sensu::Plugin::Check::CLI
         m = line.match(config[:pattern]) unless line.match(config[:exclude])
       end
       if m
-        accumulative_error += "\n" + line.slice(0..config[:return_content_length])
+        if !config[:return_error_limit] || (config[:return_error_limit] && n_matched < config[:return_error_limit])
+          accumulative_error += "\n" + line.slice(0..config[:return_content_length])
+        end
         n_matched += 1
       end
     end
