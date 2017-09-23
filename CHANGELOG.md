@@ -5,9 +5,11 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 ## [Unreleased]
 
+### Added
+- check-log.rb: `return-error-limit` option to limit the number of returned matched lines (log entries) (@jhshadi)
+
 ## [1.2.1] - 2017-09-23
 ### Added
-- Add `return-error-limit` option to limit the number of returned matched lines (log entries) (@jhshadi)
 - ruby 2.4 testing (@majormoses)
 
 ### Fixed
