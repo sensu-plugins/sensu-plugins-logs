@@ -5,6 +5,7 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 ## [Unreleased]
 
+## [1.3.0] - 2017-09-23
 ### Added
 - check-log.rb: `return-error-limit` option to limit the number of returned matched lines (log entries) (@jhshadi)
 
@@ -67,7 +68,8 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.2.1...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.3.0...HEAD
+[1.3.0]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.2.1...1.3.0
 [1.2.1]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.2.2...1.2.0
 [1.1.2]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.1.1...1.1.2
