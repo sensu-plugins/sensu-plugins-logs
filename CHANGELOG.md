@@ -5,6 +5,9 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 ## [Unreleased]
 
+### Fixed
+- check-log.rb: added `File::TRUNC` option to the state file to address scenerios where files were written to often and rotated which caused the offset to be wrong. This caused high diskio as it was trying to seek to a part of a non existent file or past the correct location in the file. (@georgespatton)
+
 ## [1.3.0] - 2017-09-23
 ### Added
 - check-log.rb: `return-error-limit` option to limit the number of returned matched lines (log entries) (@jhshadi)
