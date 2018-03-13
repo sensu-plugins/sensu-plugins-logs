@@ -55,7 +55,8 @@ class CheckLog < Sensu::Plugin::Check::CLI
   option :pattern,
          description: 'Pattern to search for',
          short: '-q PAT',
-         long: '--pattern PAT'
+         long: '--pattern PAT',
+         required: true
 
   # this check currently makes no attempt to try to save you from
   # a bad regex such as being unbound. Regexes ending in anything like:
@@ -145,7 +146,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
 
   def run
     unknown 'No log file specified' unless config[:log_file] || config[:file_pattern]
-    unknown 'No pattern specified' unless config[:pattern]
+    unknown 'No thresholds specified' unless config[:crit] || config[:warn]
     file_list = []
     file_list << config[:log_file] if config[:log_file]
     if config[:file_pattern]
