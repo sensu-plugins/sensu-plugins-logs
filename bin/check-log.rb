@@ -85,13 +85,13 @@ class CheckLog < Sensu::Plugin::Check::CLI
          long: '--encoding ENCODING-PAGE'
 
   option :warn,
-         description: 'Warning level if pattern has a group',
+         description: 'Warning level if pattern is found >= N times',
          short: '-w N',
          long: '--warn N',
          proc: proc(&:to_i)
 
   option :crit,
-         description: 'Critical level if pattern has a group',
+         description: 'Critical level if pattern is found >= N times',
          short: '-c N',
          long: '--crit N',
          proc: proc(&:to_i)
