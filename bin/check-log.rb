@@ -86,16 +86,17 @@ class CheckLog < Sensu::Plugin::Check::CLI
          long: '--encoding ENCODING-PAGE'
 
   option :warn,
-         description: 'Warning level if pattern is found >= N times',
+         description: 'Warning level if pattern is found >= <warn> times',
          short: '-w N',
          long: '--warn N',
          proc: proc(&:to_i)
 
   option :crit,
-         description: 'Critical level if pattern is found >= N times',
+         description: 'Critical level if pattern is found >= <crit> times. Default: 1',
          short: '-c N',
          long: '--crit N',
-         proc: proc(&:to_i)
+         proc: proc(&:to_i),
+         default: 1
 
   option :only_warn,
          description: 'Warn instead of critical on match',
