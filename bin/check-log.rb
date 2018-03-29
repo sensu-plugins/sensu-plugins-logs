@@ -245,7 +245,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
       n_warns = n_matched
     end
     FileUtils.mkdir_p(File.dirname(@state_file))
-    File.open(@state_file, File::RDWR | File::TRUNC | File::CREAT, 0644) do |file|
+    File.open(@state_file, File::RDWR | File::TRUNC | File::CREAT, 0o0644) do |file|
       file.flock(File::LOCK_EX) unless Gem.win_platform?
       file.write(@bytes_to_skip + bytes_read)
     end
