@@ -55,7 +55,8 @@ class CheckLog < Sensu::Plugin::Check::CLI
   option :pattern,
          description: 'Pattern to search for',
          short: '-q PAT',
-         long: '--pattern PAT'
+         long: '--pattern PAT',
+         required: true
 
   # this check currently makes no attempt to try to save you from
   # a bad regex such as being unbound. Regexes ending in anything like:
@@ -85,16 +86,17 @@ class CheckLog < Sensu::Plugin::Check::CLI
          long: '--encoding ENCODING-PAGE'
 
   option :warn,
-         description: 'Warning level if pattern has a group',
+         description: 'Warning level if pattern is found >= <warn> times',
          short: '-w N',
          long: '--warn N',
          proc: proc(&:to_i)
 
   option :crit,
-         description: 'Critical level if pattern has a group',
+         description: 'Critical level if pattern is found >= <crit> times. Default: 1',
          short: '-c N',
          long: '--crit N',
-         proc: proc(&:to_i)
+         proc: proc(&:to_i),
+         default: 1
 
   option :only_warn,
          description: 'Warn instead of critical on match',
@@ -145,7 +147,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
 
   def run
     unknown 'No log file specified' unless config[:log_file] || config[:file_pattern]
-    unknown 'No pattern specified' unless config[:pattern]
+    unknown 'No thresholds specified' unless config[:crit] || config[:warn]
     file_list = []
     file_list << config[:log_file] if config[:log_file]
     if config[:file_pattern]
@@ -243,7 +245,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
       n_warns = n_matched
     end
     FileUtils.mkdir_p(File.dirname(@state_file))
-    File.open(@state_file, File::RDWR | File::TRUNC | File::CREAT, 0644) do |file|
+    File.open(@state_file, File::RDWR | File::TRUNC | File::CREAT, 0o0644) do |file|
       file.flock(File::LOCK_EX) unless Gem.win_platform?
       file.write(@bytes_to_skip + bytes_read)
     end
