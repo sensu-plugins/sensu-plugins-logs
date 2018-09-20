@@ -25,12 +25,12 @@ Gem::Specification.new do |s| # rubocop:disable Metrics/BlockLength
   s.platform               = Gem::Platform::RUBY
   s.post_install_message   = 'You can use the embedded Ruby by setting EMBEDDED_RUBY=true in /etc/default/sensu'
   s.require_paths          = ['lib']
-  s.required_ruby_version  = '>= 2.1'
+  s.required_ruby_version  = '>= 2.0'
   s.summary                = 'Sensu plugins for logs'
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
   s.version                = SensuPluginsLogs::Version::VER_STRING
 
-  s.add_runtime_dependency 'sensu-plugin', '~> 2.6'
+  s.add_runtime_dependency 'sensu-plugin', '~> 2.7'
 
   s.add_development_dependency 'bundler',                   '~> 1.15'
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
