@@ -5,7 +5,9 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 ## [Unreleased]
 ### Added
-- updateed to use sensu-plugin 2.7 with 2.x to 1.x migration option
+- updated to use sensu-plugin 2.7 with 2.x to 1.x migration option
+### Changed
+- require ruby 2.3.0 or greater, resolves issues with dependancies 
 
 ### Fixed
 - check-log.rb: pattern is now required via option config
