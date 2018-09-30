@@ -6,7 +6,7 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 ## [Unreleased]
 ### Added
 - updated to use sensu-plugin 2.7 with 2.x to 1.x migration option
-### Changed
+### Breaking Changes
 - require ruby 2.3.0 or greater, resolves issues with dependancies 
 
 ### Fixed
