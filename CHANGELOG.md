@@ -5,6 +5,7 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 ## [Unreleased]
 
+## [2.0.0] - 2018-09-30
 ### Breaking Changes
 - remove support for ruby versions `< 2.3.0` (@jspaleta)
 
