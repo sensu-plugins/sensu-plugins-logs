@@ -15,6 +15,7 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 - update dev dep for github-markup
 - update dev dep for codeclimate-test-reporter 
 - update dev dep for serverspec
+- update dev dep for mixlib-shellout
 - check-log.rb: pattern is now required via option config
 - check-log.rb: update descriptions of crit and warn options
 
