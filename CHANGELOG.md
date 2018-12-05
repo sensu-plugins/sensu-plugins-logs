@@ -4,16 +4,29 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md)
 
 ## [Unreleased]
-### Added
+### Breaking Changes
 - updated to use sensu-plugin 3.0 with Sensu Go to Sensu Core 1.x migration option
+
+### Added
 - add ruby 2.5.1 into travis automation
 
-### Breaking Changes
-- require ruby 2.3.0 or greater, resolves issues with dependancies 
 ### Fixed
 - add rdoc to development dependancy to fix rake task errors
 - check-log.rb: pattern is now required via option config
 - check-log.rb: update descriptions of crit and warn options
+
+## [2.0.0] - 2018-09-30
+### Breaking Changes
+- remove support for ruby versions `< 2.3.0` (@jspaleta)
+
+### Added
+- updated to use sensu-plugin 2.7 with 2.x to 1.x migration option (@jspaleta)
+
+
+### Fixed
+- check-log.rb: pattern is now required via option config (@cgeers)
+- check-log.rb: update descriptions of crit and warn options (@cgeers)
+>>>>>>> upstream/master
 
 ## [1.3.1] - 2017-10-09
 ### Fixed
@@ -82,7 +95,8 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.3.1...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.3.1...2.0.0
 [1.3.1]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.2.1...1.3.0
 [1.2.1]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.2.0...1.2.1
