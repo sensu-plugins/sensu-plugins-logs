@@ -1,3 +1,5 @@
+AllCops:
+  TargetRubyVersion: 2.3
 
 MethodLength:
   Max: 200
@@ -30,4 +32,10 @@ Style/Documentation:
   Enabled: false
 
 Style/Next:
+  Enabled: false
+
+Style/AlignHash:
+  EnforcedHashRocketStyle: table 
+
+Style/FrozenStringLiteralComment:
   Enabled: false
