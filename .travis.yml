@@ -9,10 +9,9 @@ before_install:
 install:
 - bundle install
 rvm:
-- 2.1
-- 2.2
 - 2.3.0
 - 2.4.1
+- 2.5.1
 notifications:
   email:
     recipients:
@@ -32,8 +31,7 @@ deploy:
   on:
     tags: true
     all_branches: true
-    rvm: 2.1
-    rvm: 2.2
     rvm: 2.3.0
     rvm: 2.4.1
+    rvm: 2.5.1
     repo: sensu-plugins/sensu-plugins-logs
