@@ -13,24 +13,26 @@ require 'json'
 
 class LogEvent < Sensu::Handler
   def handle
-    check_name = @event['check']['name'] if @event.include? 'check' and @event['check'].include? 'name'
+    event_action = @event['action']
+    event_action ||= 'unknown'
+    check_name = @event['check']['name'] if (@event.include? 'check') && (@event['check'].include? 'name')
     check_name ||= 'unknown'
-    client_name = @event['client']['name'] if @event.include? 'client' and @event['client'].include? 'name'
+    client_name = @event['client']['name'] if (@event.include? 'client') && (@event['client'].include? 'name')
     client_name ||= 'unknown'
-    check_executed = @event['check']['executed'] if @event.include? 'check' and @event['check'].include? 'executed'
+    check_executed = @event['check']['executed'] if (@event.include? 'check') && (@event['check'].include? 'executed')
     check_executed ||= 'unknown'
-    dir_stub = settings['logevent']['eventdir'] if settings.include? 'logevent' and settings['logevent'].include? 'eventdir'
+    dir_stub = settings['logevent']['eventdir'] if (settings.include? 'logevent') && (settings['logevent'].include? 'eventdir')
     puts settings
-    raise 'logevent eventdir setting is missing' unless dir_stub 
+    raise 'logevent eventdir setting is missing' unless dir_stub
 
     eventdir = "#{settings['logevent']['eventdir']}/#{client_name}/#{check_name}"
     FileUtils.mkdir_p(eventdir)
 
-    File.open("#{eventdir}/#{@event['check']['executed']}.#{@event['action']}", 'w') do |f|
+    File.open("#{eventdir}/#{check_executed}.#{event_action}", 'w') do |f|
       f.write(JSON.pretty_generate(@event))
     end
 
-    events = Dir.glob("#{eventdir}/*.#{@event['action']}")
+    events = Dir.glob("#{eventdir}/*.#{event_action}")
     # #YELLOW
     if settings['logevent']['keep'] < events.length # rubocop:disable GuardClause
       FileUtils.rm_f(events.sort.reverse.shift(settings['logevent']['keep']))

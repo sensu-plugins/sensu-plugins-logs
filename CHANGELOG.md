@@ -7,6 +7,9 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 ### Breaking Changes
 - updated to use sensu-plugin 3.0 with Sensu Go to Sensu Core 1.x migration option
 
+### Changes
+- Update handler-logevent.rb to gracefully handle missing check and client definitions in events.  Missing attributes will use 'unknown' fallback strings so that malformed events will still be captured in the event logging directory structure instead of erroring out.  Useful for diagnosing problems with malformed events when migrating to Sensu Go.  
+
 ### Added
 - add ruby 2.5.1 into travis automation
 
