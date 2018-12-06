@@ -13,7 +13,17 @@ require 'json'
 
 class LogEvent < Sensu::Handler
   def handle
-    eventdir = "#{settings['logevent']['eventdir']}/#{@event['client']['name']}/#{@event['check']['name']}"
+    check_name = @event['check']['name'] if @event.include? 'check' and @event['check'].include? 'name'
+    check_name ||= 'unknown'
+    client_name = @event['client']['name'] if @event.include? 'client' and @event['client'].include? 'name'
+    client_name ||= 'unknown'
+    check_executed = @event['check']['executed'] if @event.include? 'check' and @event['check'].include? 'executed'
+    check_executed ||= 'unknown'
+    dir_stub = settings['logevent']['eventdir'] if settings.include? 'logevent' and settings['logevent'].include? 'eventdir'
+    puts settings
+    raise 'logevent eventdir setting is missing' unless dir_stub 
+
+    eventdir = "#{settings['logevent']['eventdir']}/#{client_name}/#{check_name}"
     FileUtils.mkdir_p(eventdir)
 
     File.open("#{eventdir}/#{@event['check']['executed']}.#{@event['action']}", 'w') do |f|
