@@ -219,7 +219,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
     n_matched = 0
     accumulative_error = ''
 
-    @log.seek(@bytes_to_skip, File::SEEK_SET) if @bytes_to_skip.positve?
+    @log.seek(@bytes_to_skip, File::SEEK_SET) if @bytes_to_skip > 0
     # #YELLOW
     @log.each_line do |line|
       line = encode_line(line)
