@@ -34,7 +34,6 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 ### Fixed
 - check-log.rb: pattern is now required via option config (@cgeers)
 - check-log.rb: update descriptions of crit and warn options (@cgeers)
->>>>>>> upstream/master
 
 ## [1.3.1] - 2017-10-09
 ### Fixed
