@@ -39,3 +39,6 @@ Style/AlignHash:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false

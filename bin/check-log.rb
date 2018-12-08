@@ -179,9 +179,9 @@ class CheckLog < Sensu::Plugin::Check::CLI
       end
     end
     message "#{n_warns_overall} warnings, #{n_crits_overall} criticals for pattern #{config[:pattern]}. #{error_overall}"
-    if n_crits_overall.positive?
+    if n_crits_overall > 0
       critical
-    elsif n_warns_overall.positive?
+    elsif n_warns_overall > 0
       warning
     else
       ok
