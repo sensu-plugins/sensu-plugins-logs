@@ -4,6 +4,24 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md)
 
 ## [Unreleased]
+### Breaking Changes
+- updated to use sensu-plugin 3.0 with Sensu Go to Sensu Core 1.x migration option
+
+### Changes
+- Update handler-logevent.rb to gracefully handle missing check and client definitions in events.  Missing attributes will use 'unknown' fallback strings so that malformed events will still be captured in the event logging directory structure instead of erroring out.  Useful for diagnosing problems with malformed events when migrating to Sensu Go.  
+
+### Added
+- add ruby 2.5.1 into travis automation
+
+### Fixed
+- add rdoc to development dependancy to fix rake task errors ruby 2.5.1
+- update dev dep for github-markup
+- update dev dep for codeclimate-test-reporter 
+- update dev dep for serverspec
+- update dev dep for mixlib-shellout
+- update dev dep for rubocop
+- check-log.rb: pattern is now required via option config
+- check-log.rb: update descriptions of crit and warn options
 
 ## [2.0.0] - 2018-09-30
 ### Breaking Changes

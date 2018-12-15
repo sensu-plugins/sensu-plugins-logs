@@ -31,3 +31,7 @@
 [Installation and Setup](http://sensu-plugins.io/docs/installation_instructions.html)
 
 ## Notes
+### Using this plugin with Sensu Go
+* To use included handlers with Sensu Go, use `--map-go-event-into-ruby` argument or set environment variable `SENSU_MAP_GO_EVENT_INTO_RUBY=1`
+
+* Make sure necessary handler configuration json exists under `/etc/sensu/conf.d/` or at a path in the colon separated list of files in the environment variable `SENSU_CONFIG_FILES` 

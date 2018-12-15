@@ -167,7 +167,7 @@ class CheckLog < Sensu::Plugin::Check::CLI
     file_list.each do |log_file|
       begin
         open_log log_file
-      rescue => e
+      rescue StandardError => e
         unknown "Could not open log file: #{e}"
       end
       n_warns, n_crits, accumulative_error = search_log
@@ -199,14 +199,15 @@ class CheckLog < Sensu::Plugin::Check::CLI
            end
 
     @state_file = File.join(state_dir, File.expand_path(log_file).sub(/^([A-Z]):\//, '\1/'))
-    @bytes_to_skip = begin
-      File.open(@state_file) do |file|
-        file.flock(File::LOCK_SH) unless Gem.win_platform?
-        file.readline.to_i
+    @bytes_to_skip =
+      begin
+        File.open(@state_file) do |file|
+          file.flock(File::LOCK_SH) unless Gem.win_platform?
+          file.readline.to_i
+        end
+      rescue StandardError
+        0
       end
-    rescue
-      0
-    end
   end
 
   def search_log

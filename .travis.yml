@@ -11,6 +11,7 @@ install:
 rvm:
 - 2.3.0
 - 2.4.1
+- 2.5.1
 notifications:
   email:
     recipients:
@@ -32,4 +33,5 @@ deploy:
     all_branches: true
     rvm: 2.3.0
     rvm: 2.4.1
+    rvm: 2.5.1
     repo: sensu-plugins/sensu-plugins-logs

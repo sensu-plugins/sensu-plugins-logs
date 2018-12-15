@@ -27,3 +27,6 @@ suites:
   - name: ruby-241
     driver:
       image: ruby:2.4.1-slim
+  - name: ruby-251
+    driver:
+      image: ruby:2.5.1-slim
