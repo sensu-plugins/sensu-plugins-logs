@@ -4,24 +4,24 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md)
 
 ## [Unreleased]
+
+## [3.0.0] - 2018-12-15
 ### Breaking Changes
 - updated to use sensu-plugin 3.0 with Sensu Go to Sensu Core 1.x migration option
 
 ### Changes
-- Update handler-logevent.rb to gracefully handle missing check and client definitions in events.  Missing attributes will use 'unknown' fallback strings so that malformed events will still be captured in the event logging directory structure instead of erroring out.  Useful for diagnosing problems with malformed events when migrating to Sensu Go.  
+- Update handler-logevent.rb to gracefully handle missing check and client definitions in events.  Missing attributes will use 'unknown' fallback strings so that malformed events will still be captured in the event logging directory structure instead of erroring out.  Useful for diagnosing problems with malformed events when migrating to Sensu Go. (@jspaleta)
 
 ### Added
-- add ruby 2.5.1 into travis automation
+- add ruby 2.5.1 into travis automation (@jspaleta)
 
 ### Fixed
-- add rdoc to development dependancy to fix rake task errors ruby 2.5.1
-- update dev dep for github-markup
-- update dev dep for codeclimate-test-reporter 
-- update dev dep for serverspec
-- update dev dep for mixlib-shellout
-- update dev dep for rubocop
-- check-log.rb: pattern is now required via option config
-- check-log.rb: update descriptions of crit and warn options
+- add rdoc to development dependancy to fix rake task errors ruby 2.5.1 (@jspaleta) (@dependabot)
+- update dev dep for github-markup (@jspaleta) (@dependabot)
+- update dev dep for codeclimate-test-reporter (@jspaleta) (@dependabot)
+- update dev dep for serverspec (@jspaleta) (@dependabot)
+- update dev dep for mixlib-shellout (@jspaleta) (@dependabot)
+- update dev dep for rubocop (@jspaleta) (@dependabot)
 
 ## [2.0.0] - 2018-09-30
 ### Breaking Changes
@@ -102,7 +102,8 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/2.0.0...3.0.0
 [2.0.0]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.3.1...2.0.0
 [1.3.1]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/sensu-plugins/sensu-plugins-logs/compare/1.2.1...1.3.0
