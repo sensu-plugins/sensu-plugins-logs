@@ -30,7 +30,7 @@ Gem::Specification.new do |s| # rubocop:disable Metrics/BlockLength
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
   s.version                = SensuPluginsLogs::Version::VER_STRING
 
-  s.add_runtime_dependency 'sensu-plugin', '~> 3.0'
+  s.add_runtime_dependency 'sensu-plugin', '>= 3', '< 5'
 
   s.add_development_dependency 'bundler',                   '~> 1.15'
   s.add_development_dependency 'codeclimate-test-reporter', '~> 1.0'
