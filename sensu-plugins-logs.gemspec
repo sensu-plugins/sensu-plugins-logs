@@ -44,7 +44,7 @@ Gem::Specification.new do |s| # rubocop:disable Metrics/BlockLength
   s.add_development_dependency 'rdoc',                      '~> 6.0'
   s.add_development_dependency 'redcarpet',                 '~> 3.2'
   s.add_development_dependency 'rspec',                     '~> 3.4'
-  s.add_development_dependency 'rubocop',                   '~> 0.60.0'
+  s.add_development_dependency 'rubocop',                   '~> 0.78.0'
   s.add_development_dependency 'serverspec',                '~> 2.41.3'
   s.add_development_dependency 'test-kitchen',              '~> 1.6'
   s.add_development_dependency 'yard',                      '~> 0.9.11'
