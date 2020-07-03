@@ -20,3 +20,6 @@ mkmf.log
 # test-kitchen
 .kitchen/
 .kitchen.list.yml
+
+# bonsai helper repo
+bonsai/

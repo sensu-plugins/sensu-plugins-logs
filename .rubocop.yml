@@ -34,11 +34,8 @@ Style/Documentation:
 Style/Next:
   Enabled: false
 
-Style/AlignHash:
-  EnforcedHashRocketStyle: table 
-
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
 
 Style/NumericPredicate:
   Enabled: false

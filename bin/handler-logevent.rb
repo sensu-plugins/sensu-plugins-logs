@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: false
+
 #
 # This handler logs last settings['logevent']['keep'] json events in files as
 # settings['logevent']['eventdir']/client/check_name/timestamp.action
@@ -34,7 +36,7 @@ class LogEvent < Sensu::Handler
 
     events = Dir.glob("#{eventdir}/*.#{event_action}")
     # #YELLOW
-    if settings['logevent']['keep'] < events.length # rubocop:disable GuardClause
+    if settings['logevent']['keep'] < events.length # rubocop:disable Style/GuardClause
       FileUtils.rm_f(events.sort.reverse.shift(settings['logevent']['keep']))
     end
   end
