@@ -5,7 +5,8 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 ## [Unreleased]
 ### Changed
-- Updated  rubocop development dependency to '~= 0.81.0'
+- Updated rubocop development dependency to '~= 0.81.0'
+- Updated rake development dependency to '~= 13.0'
 
 ### Added
 - Updated asset build targets to support centos6

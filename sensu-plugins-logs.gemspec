@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
   # locked to keep ruby 2.1 support, this is pulled in by test-kitchen
   s.add_development_dependency 'mixlib-shellout',           '~> 2.2', '< 2.5.0'
   s.add_development_dependency 'pry',                       '~> 0.10'
-  s.add_development_dependency 'rake',                      '~> 12.0'
+  s.add_development_dependency 'rake',                      '~> 13.0'
   s.add_development_dependency 'rdoc',                      '~> 6.0'
   s.add_development_dependency 'redcarpet',                 '~> 3.2'
   s.add_development_dependency 'rspec',                     '~> 3.4'
