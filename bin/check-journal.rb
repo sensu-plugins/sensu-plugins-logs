@@ -98,7 +98,7 @@ class CheckJournal < Sensu::Plugin::Check::CLI
 
     n_matches = search_journal(journalctl_args)
 
-    message = "#{n_matches} matches found for #{config[:pattern]} in `journalctl #{journalctl_args}`"
+    message = "#{n_matches} matches found for #{config[:pattern]} in `LD_LIBRARY_PATH= journalctl #{journalctl_args}`"
     if n_matches >= config[:critical_count]
       critical message + " (threshold #{config[:critical_count]})"
     elsif n_matches >= config[:warning_count]
